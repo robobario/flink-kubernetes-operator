@@ -159,3 +159,12 @@ due to a known bug in Okhttp client. As a workaround before new Okhttp 5.0.0 rel
 for both Flink Operator and Flink Deployment Configuration.
 
 KUBERNETES_DISABLE_HOSTNAME_VERIFICATION=true
+
+## Default Configuration Overrides
+
+The operator is capable of applying an override configuration file from a location specified with the `CONF_OVERRIDE_DIR` environment variable.
+This is to support some advanced use cases where the configuration responsibilities may be split between the operator and a control plane. The 
+properties will be loaded from a `config.yaml` or `flink-config.yaml` in the specified directory, these configurations will take precendence 
+over the defaults. See [FLINK-28445](https://issues.apache.org/jira/browse/FLINK-28445) for more detail.
+
+Note this behaviour is not exposed via the existing helm chart.
